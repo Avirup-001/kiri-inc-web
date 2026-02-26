@@ -168,10 +168,10 @@ const Hero = () => {
     <section ref={containerRef} className="relative flex min-h-[100dvh] items-end pb-24 pt-32 lg:pb-32">
       {/* Background Image & Gradient */}
       <div
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-60"
         style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1504625709867-b4e45e3bb9dd?q=80&w=2352&auto=format&fit=crop")' }}
       />
-      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-dark via-dark/95 to-dark/40" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-dark via-dark/80 to-transparent" />
 
       <div className="relative z-10 w-full px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
         <div className="max-w-4xl text-white">
