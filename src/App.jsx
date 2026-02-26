@@ -437,8 +437,8 @@ const Philosophy = () => {
   return (
     <section ref={containerRef} id="philosophy" className="relative py-48 bg-dark text-paper overflow-hidden">
       <div
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url("https://unsplash.com/photos/architectural-photo-of-building-MPWbGMrZ6eo")' }}
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-30"
+        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1541888043681-370c9ebbe559?q=80&w=2938&auto=format&fit=crop")' }}
       />
       <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-12 lg:px-24">
         <div className="phil-line font-heading text-lg md:text-xl text-paper/60 uppercase tracking-widest mb-12">
