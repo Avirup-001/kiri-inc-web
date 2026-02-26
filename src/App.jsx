@@ -379,12 +379,31 @@ const CursorProtocolScheduler = () => {
 };
 
 const Features = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.feature-card', {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 85%',
+        },
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power3.out'
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="features" className="py-24 px-6 md:px-12 lg:px-24 bg-background z-10 relative rounded-t-[3rem] -mt-8 shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
+    <section ref={containerRef} id="features" className="py-24 px-6 md:px-12 lg:px-24 bg-background z-10 relative rounded-t-[3rem] -mt-8 shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Card 1 */}
-          <div className="flex flex-col gap-6">
+          <div className="feature-card flex flex-col gap-6">
             <DiagnosticShuffler />
             <div>
               <h3 className="font-heading text-xl font-bold uppercase">Rapid Velocity</h3>
@@ -392,7 +411,7 @@ const Features = () => {
             </div>
           </div>
           {/* Card 2 */}
-          <div className="flex flex-col gap-6">
+          <div className="feature-card flex flex-col gap-6">
             <TelemetryTypewriter />
             <div>
               <h3 className="font-heading text-xl font-bold uppercase">AI Acquisition</h3>
@@ -400,7 +419,7 @@ const Features = () => {
             </div>
           </div>
           {/* Card 3 */}
-          <div className="flex flex-col gap-6">
+          <div className="feature-card flex flex-col gap-6">
             <CursorProtocolScheduler />
             <div>
               <h3 className="font-heading text-xl font-bold uppercase">Proven Reliability</h3>
@@ -600,16 +619,35 @@ const Protocol = () => {
 
 // --- PRICING SECTION ---
 const Pricing = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.pricing-card', {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%',
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power3.out'
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="pricing" className="py-32 px-6 md:px-12 lg:px-24 bg-background z-20 relative">
+    <section ref={containerRef} id="pricing" className="py-32 px-6 md:px-12 lg:px-24 bg-background z-20 relative">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="pricing-card text-center mb-16">
           <h2 className="font-heading text-4xl md:text-5xl font-bold uppercase mb-4">Membership Tiers</h2>
           <p className="font-data text-sm opacity-70">Select the deployment capacity that matches your growth velocity.</p>
         </div>
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {/* Card 1 */}
-          <div className="p-8 border border-dark/10 rounded-[2rem] bg-paper relative z-10 transition-transform hover:-translate-y-1 duration-300">
+          <div className="pricing-card p-8 border border-dark/10 rounded-[2rem] bg-paper relative z-10 transition-transform hover:-translate-y-1 duration-300">
             <h3 className="font-heading text-lg font-bold uppercase mb-2">Essential</h3>
             <div className="font-drama text-4xl mb-6">$1,500<span className="text-lg font-data opacity-50">/mo</span></div>
             <ul className="font-data text-sm space-y-4 mb-8 opacity-80">
@@ -620,7 +658,7 @@ const Pricing = () => {
             <button className="w-full py-4 rounded-full border border-dark font-heading font-bold text-sm uppercase transition-colors hover:bg-dark hover:text-paper">Deploy Essential</button>
           </div>
           {/* Card 2 - Middle Pop */}
-          <div className="p-10 border border-accent rounded-[2rem] bg-dark text-paper relative transform md:-translate-y-8 md:scale-105 shadow-[0_0_60px_-15px] shadow-accent/40 z-20 transition-transform duration-500 hover:scale-[1.07]">
+          <div className="pricing-card p-10 border border-accent rounded-[2rem] bg-dark text-paper relative transform md:-translate-y-8 md:scale-105 shadow-[0_0_60px_-15px] shadow-accent/40 z-20 transition-transform duration-500 hover:-translate-y-10 hover:scale-[1.07]">
             {/* Background Glow Overlay */}
             <div className="absolute inset-0 rounded-[2rem] border-2 border-accent/50 overflow-hidden pointer-events-none">
               <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-accent/20 to-transparent"></div>
