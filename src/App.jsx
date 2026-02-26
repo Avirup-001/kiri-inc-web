@@ -520,7 +520,7 @@ const ConversionProtocolSVG = () => (
 );
 const ProtocolCard = ({ step, title, desc, SVGComponent }) => {
   return (
-    <div className="panel h-[100dvh] w-full flex items-center justify-center sticky top-0 bg-background border-t border-dark/10">
+    <div className="panel min-h-[100dvh] md:h-[100dvh] w-full flex items-center justify-center border-t border-dark/10 py-24 md:py-0 relative z-10 bg-background">
       <div className="w-full max-w-7xl px-6 md:px-12 lg:px-24 grid md:grid-cols-2 gap-12 items-center">
         <div>
           <div className="font-data text-accent mb-4">STEP {step}</div>
@@ -542,33 +542,38 @@ const Protocol = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const panels = gsap.utils.toArray('.panel');
-      panels.forEach((panel, i) => {
-        if (i !== panels.length - 1) {
-          ScrollTrigger.create({
-            trigger: panel,
-            start: 'top top',
-            endTrigger: panels[i + 1],
-            end: 'top top',
-            pin: true,
-            pinSpacing: false,
-            animation: gsap.to(panel, {
-              scale: 0.9,
-              opacity: 0.5,
-              filter: 'blur(20px)',
-              duration: 1,
-              ease: 'none'
-            }),
-            scrub: true,
-          });
-        }
+      // Use matchMedia to only apply heavy scroll-jacking/pinning on tablets+
+      let mm = gsap.matchMedia();
+
+      mm.add("(min-width: 768px)", () => {
+        const panels = gsap.utils.toArray('.panel');
+        panels.forEach((panel, i) => {
+          if (i !== panels.length - 1) {
+            ScrollTrigger.create({
+              trigger: panel,
+              start: 'top top',
+              endTrigger: panels[i + 1],
+              end: 'top top',
+              pin: true,
+              pinSpacing: false,
+              animation: gsap.to(panel, {
+                scale: 0.9,
+                opacity: 0.5,
+                filter: 'blur(20px)',
+                duration: 1,
+                ease: 'none'
+              }),
+              scrub: true,
+            });
+          }
+        });
       });
     }, containerRef);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section id="protocol" ref={containerRef} className="relative z-20">
+    <section id="protocol" ref={containerRef} className="relative z-20 bg-background">
       <ProtocolCard
         step="01"
         title="Signal Extraction"
