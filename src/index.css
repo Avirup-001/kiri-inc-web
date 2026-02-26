@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-dark font-heading antialiased selection:bg-accent selection:text-white m-0 p-0 overflow-x-hidden;
+  }
+}
+
+/* Global CSS Noise Overlay for visual texture */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.05;
+}
+
+/* Base custom interactive utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
