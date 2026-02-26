@@ -439,7 +439,7 @@ const Philosophy = () => {
       {/* Parallax Background */}
       <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-60"
-        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1541888043681-370c9ebbe559?q=80&w=2938&auto=format&fit=crop")' }}
+        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1550684848-fac1c5b4e853?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80")' }}
       />
       <div className="absolute inset-0 z-[1] bg-gradient-to-b from-dark via-dark/40 to-dark" />
       <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-12 lg:px-24">
